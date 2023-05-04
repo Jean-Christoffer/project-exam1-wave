@@ -80,6 +80,7 @@ async function getData(categoryValue = '', searchQuery =''){
                 const imgContainer = document.createElement('div')
                 imgContainer.className = 'posts-img-container'
                 const articleImg = document.createElement('img')
+                articleImg.alt = post.title.rendered
                 articleImg.src = `${post._embedded['wp:featuredmedia'][0].source_url}`
                 imgContainer.append(articleImg)
 

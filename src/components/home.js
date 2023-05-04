@@ -49,6 +49,7 @@ async function renderHTML(data){
                 const postImage = document.createElement('img')
                 postImage.src = `${post._embedded['wp:featuredmedia'][0].source_url}`
                 postImage.className = 'blog-card-img'
+                postImage.alt = post.title.rendered
                 imgContainer.append(postImage)
         
                 const cardBody = document.createElement('div')

@@ -241,7 +241,7 @@ header, .nav{
 }
 .wrapper .slider{
   white-space: nowrap;
-  overflow: scroll;
+  overflow: hidden;
   margin: 20px auto;
 }
 
@@ -694,10 +694,16 @@ footer{
   max-height: 100%;
   background: url(no-dimensions-or-ratio.svg);
   background-size: contain;
-  
 
 }
-
+.about-us-article h2 {
+  text-align: center;
+}
+@media(min-width: 52rem){
+  .about-us-article h2{
+    text-align: left;
+  }
+}
 
 /*Forms*/
 .comment-form-btn-container{
