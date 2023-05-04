@@ -25,74 +25,9 @@ async function getData(){
 
 async function renderHTML(data){
 
-        // Hero section
-
-        //Latest blog posts
-
         try{
             data.forEach(async post => {
-
-
-                const formatedText = post.excerpt.rendered
-                const parser = new DOMParser();
-                const formatedElement = parser.parseFromString(formatedText, 'text/html').body.firstChild;
-                const formattedFinal = formatedElement.textContent;
-
-
-
-                const postContainer = document.createElement('div')
-                postContainer.className = 'blog-card'
-                
-
-                const imgContainer = document.createElement('div')
-                imgContainer.className = 'blog-card-img-container'
-                const postImage = document.createElement('img')
-                postImage.src = `${post._embedded['wp:featuredmedia'][0].source_url}`
-                postImage.className = 'blog-card-img'
-                postImage.alt = post.title.rendered
-                imgContainer.append(postImage)
-        
-                const cardBody = document.createElement('div')
-                cardBody.className = 'card-body'
-        
-                const category = document.createElement('span')
-                category.className = `${post._embedded['wp:term'][0][0].name} tag`
                
-                category.textContent = `${post._embedded['wp:term'][0][0].name}`
-            
-                const postTitle = document.createElement('a')
-                postTitle.textContent = post.title.rendered
-                postTitle.className = 'title-link'
-                postTitle.href=`details.html?id=${post.id}`
-
-
-                const readMore = document.createElement('a')
-                readMore.textContent = 'Read more'
-
-                readMore.href = `details.html?id=${post.id}`
-                readMore.className = 'read-more'
-            
-                const postArticle = document.createElement('p')
-                postArticle.textContent = formattedFinal
-                postArticle.className = 'subTitle-text'
-            
-                const postArticleContainer = document.createElement('article')
-                postArticleContainer.append(postTitle, postArticle,readMore)
-                
-                const cardBottom = document.createElement('div')
-                cardBottom.className = 'card-bottom'
-        
-                const writer = document.createElement('div')
-                writer.className = 'writer'
-        
-        
-        
-                const userInfo = document.createElement('div')
-                const userName = document.createElement('p')
-                userName.textContent = `Author: ${post._embedded.author[0].name}`
-
-
-                const dateWritten = document.createElement('small')
                 const newDate = new Date(post.date)
                 
                 const getDay = newDate.getDate()
@@ -104,17 +39,73 @@ async function renderHTML(data){
                 
                 getMonth < 10 ? formatedMonth = `0${getMonth}` : formatedMonth = getMonth
                 getDay < 10 ? formatedDay = `0${getDay}` : formatedDay = getDay
-                dateWritten.textContent = `Published: ${formatedDay}.${formatedMonth}.${getYear}`
+             
 
+                const formatedText = post.excerpt.rendered
+                const parser = new DOMParser();
+                const formatedElement = parser.parseFromString(formatedText, 'text/html').body.firstChild;
+                const formattedFinal = formatedElement.textContent;
 
+                //card
+                const postCard = document.createElement('div')
+                postCard.className = 'blog-card'
+                //header
+                const postTitleContainer = document.createElement('div')
+                postTitleContainer.className = 'header'
+                //header image
+                const headerImage = document.createElement('img')
+                headerImage.src = `${post._embedded['wp:featuredmedia'][0].source_url}`
+                headerImage.alt = post.title.rendered
 
-                userInfo.append(userName,dateWritten)
-                writer.append( userInfo)
-                cardBottom.append(writer)
-                cardBody.append(category,postArticleContainer,cardBottom)
-                postContainer.append(imgContainer,cardBody)
+                postTitleContainer.append(headerImage)
+              
+
+                //body
+                const cardBodyContainer = document.createElement('div')
+                cardBodyContainer.className = 'card-body-container'
+
+                const cardPostContainer = document.createElement('div')
+                cardPostContainer.className = 'card-post-container'
+
+                const postTitle = document.createElement('a')
+                postTitle.textContent = post.title.rendered
+                postTitle.className = 'title-link'
+                postTitle.href=`details.html?id=${post.id}`
+
+                const postArticle = document.createElement('p')
+                postArticle.textContent = formattedFinal
+                postArticle.className = 'subTitle-text'
+
+                cardPostContainer.append(postTitle,postArticle)
+                cardBodyContainer.append(cardPostContainer)
+
+                const subInfo = document.createElement('div')
+                subInfo.className = 'sub-info'
+
+                const userInfoContainer = document.createElement('div')
+                userInfoContainer.className = 'user'
+
+                const datePublished = document.createElement('small')
+                datePublished.textContent = `Published: ${formatedDay}.${formatedMonth}.${getYear}`
                 
-                latestSection.append(postContainer)
+                const userName = document.createElement('small')
+                userName.textContent = `Author: ${post._embedded.author[0].name}`
+
+                const categoryWrapper = document.createElement('div')
+                const category = document.createElement('small')
+                const categoryTag = document.createElement('p')
+                category.textContent = `${post._embedded['wp:term'][0][0].name}`
+                categoryTag.textContent = 'Category:'
+
+                categoryWrapper.append(categoryTag,category)
+                userInfoContainer.append(userName,datePublished)
+                subInfo.append(userInfoContainer,categoryWrapper)
+
+
+                postCard.append(postTitleContainer,cardBodyContainer,subInfo)
+
+
+                latestSection.append(postCard)
                 
             });   
         }catch(error){
