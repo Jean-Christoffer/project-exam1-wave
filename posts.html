@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="stylesheet" href="../src/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bruno+Ace+SC&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight&display=swap" rel="stylesheet">     
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://kit.fontawesome.com/7cc6ea881f.js" crossorigin="anonymous"></script> 
+    <script src="src/components/hamburger.js" type="module" defer></script>
+    <script src="src/components/posts.js" type="module" defer></script>
+
+
+    <title>WAVE</title>
+  </head>
+  <body>
+
+    <header class="flex">
+        <div class="hamburger" aria-controls="nav" aria-expanded="false" role="button">
+          <span class="line top"></span>
+          <span class="line middle"></span>
+          <span class="line bottom"></span>
+        </div>
+        <div class="title-site" role="Logo"><a href="index.html">WAVE</a></div>
+        <nav  id="nav">
+          <ul class="nav flex">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="posts.html">Posts</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="about.html">About</a></li>
+          </ul>
+      </nav>
+     </header>
+
+     <main id="content">
+      <section class="section-wrapper flex">
+        <h1>Posts</h1>
+        <div class="post-form-wrapper flex">
+        <div class="sort-form">
+          <select class="category">
+            <option value="">Category</option>
+            <option value="AI technology">AI technology</option>
+            <option value="Sound">Sound</option>          
+            <option value="Scene">Scene</option>
+          </select>
+
+          <select class="sort-date">
+            <option value="newest">Newest</option>
+            <option value="oldest">Oldest</option>
+          </select>
+        </div>
+        <form class="search-form flex">
+          <div class="search input-container flex">
+            <label for="search">Search post</label>
+            <input type="text" id="search" placeholder="search post"/>
+            
+          </div>
+          <button class="btn search-btn">Seach</button>
+        </form>
+      </div>
+        <div class="post-section">
+          
+                <svg
+                class="spinner"
+                width="65px"
+                height="65px"
+                viewBox="0 0 66 66"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <circle
+                  class="path"
+                  fill="none"
+                  strokeWidth="6"
+                  strokeLinecap="round"
+                  cx="33"
+                  cy="33"
+                  r="30"
+                ></circle>
+              </svg>
+
+            </div>
+            <div class="load-more-container">
+              <button class="load-more btn">Show more</button>  
+            </div>
+      </section>
+
+     </main>
+     <footer>
+      <div class="footer-wrapper">
+        <div class="socials-wrapper flex">
+          <h1>Wave</h1>
+          <div class="socials-cotnainer flex">
+            <i class="fa-brands fa-instagram"></i>
+            <i class="fa-brands fa-facebook-f"></i>
+            <i class="fa-brands fa-twitter"></i>
+          </div>
+        </div>
+        <form class="footer-form form flex">
+          <div class="subscribe">
+              <h2>Subscribe to our news letter</h2>
+              <p>Subsribe to stay updated with our latest blog posts and happenings in the electronic music scene</p>
+          </div>
+          <div>
+            <input type="email" required placeholder="example@mail.com" class="form-field" />
+            <button class="btn">Subscribe</button>
+          </div>
+        </form>
+        <div class="copyright">
+          <h1>WAVE</h1>
+          <p>Copyright Ⓒ Wave: 2023: All rights reserved</p>
+        </div>
+      </div>
+     </footer>
+
+
+  </body>
+</html>

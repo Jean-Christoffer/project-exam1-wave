@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="stylesheet" href="src/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bruno+Ace+SC&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/7cc6ea881f.js" crossorigin="anonymous"></script>     
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="src/components/hamburger.js" type="module" defer></script>
+    <script src="src/components/home.js" type="module" defer></script>
+    <title>WAVE</title>
+  </head>
+  <body>
+    <header class="flex">
+      <div class="hamburger" aria-controls="nav" aria-expanded="false" role="button">
+        <span class="line top"></span>
+        <span class="line middle"></span>
+        <span class="line bottom"></span>
+      </div>
+      <div class="title-site" role="Logo"><a href="index.html">WAVE</a></div>
+      <nav  id="nav">
+        <ul class="nav flex">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="posts.html">Posts</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+    </nav>
+  </header>
+     <main id="content">
+        <section class="home-header">
+          <div class="hero-text">
+            <h1> Welcome to <span class="title-site title-home">WAVE</span></h1>
+            <h2>The number one electro blog</h2>
+          </div>
+        </section>
+        <div class="latest-container-title latest-posts flex">
+          <h1>Latest posts</h1>
+          <div class="btn-container flex">
+            <button class="arrow arrow-left"><i class="fa-solid fa-arrow-left"></i></button>
+            <button class="arrow arrow-right"><i class="fa-solid fa-arrow-right"></i></button>
+       
+          </div>
+        </div>
+        <div class="wrapper flex">
+
+          
+          <div class="slider flex" id="latest">
+
+                  <svg
+                  class="spinner"
+                  width="65px"
+                  height="65px"
+                  viewBox="0 0 66 66"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle
+                    class="path"
+                    fill="none"
+                    strokeWidth="6"
+                    strokeLinecap="round"
+                    cx="33"
+                    cy="33"
+                    r="30"
+                  ></circle>
+                </svg>
+
+
+
+        </div>
+      </div>
+      <hr>
+      <section class="excerpt flex">
+
+        <div class="image-carousel" id="img-carousel" aria-label="image-slider">
+          <button class="img-slider-button right prev" ><i class="fa-solid fa-arrow-left"></i></button>
+          <button class="img-slider-button left next"  ><i class="fa-solid fa-arrow-right"></i></button>
+            <ul class="image-slider" id="slides">
+              <li class="slide active-slide" >
+                <img  src="/images/about4.png"/>
+              </li>
+              <li class="slide">
+                <img  src="/images/about6.png"/>
+              </li>
+              <li class="slide">
+                <img  src="/images/about.jpg"/>
+              </li>
+              <li class="slide">
+                <img  src="/images/about3.png"/>
+              </li>
+            </ul>
+        </div>
+        <article class="excerpt-article">
+        <h2>10 Years of blogging</h2>
+        <p>Wave is an electronic music blog that caters to a wide range of music lovers, from techno and house
+          enthusiasts to experimental and ambient listeners. The blog is dedicated to showcasing the latest and greatest
+          in electronic music, with a focus on emerging artists and underground sounds.</p>
+          <p>Whether you're a seasoned veteran of the electronic music scene or a newcomer looking to explore the genre,
+            Wave has something for you. With its diverse range of content and dedicated team of writers, the blog is a
+            must-read for anyone who loves electronic music. So plug in your headphones, turn up the volume, and join
+            Wave on a journey through the ever-evolving world of electronic music.</p>
+            <div class="btn-container">
+              <a class="btn" href="about.html">Learn more</a>
+            </div>
+          </article>
+      </section>
+     </main>
+     <footer>
+      <div class="footer-wrapper">
+        <div class="socials-wrapper flex">
+          <h1>Wave</h1>
+          <div class="socials-cotnainer flex">
+            <i class="fa-brands fa-instagram"></i>
+            <i class="fa-brands fa-facebook-f"></i>
+            <i class="fa-brands fa-twitter"></i>
+          </div>
+        </div>
+        <form class="footer-form form flex">
+          <div class="subscribe">
+              <h2>Subscribe to our news letter</h2>
+              <p>Subsribe to stay updated with our latest blog posts and happenings in the electronic music scene</p>
+          </div>
+          <div>
+            <input type="email" required placeholder="example@mail.com" class="form-field" />
+            <button class="btn">Subscribe</button>
+          </div>
+        </form>
+        <div class="copyright">
+          <h1>WAVE</h1>
+          <p>Copyright Ⓒ Wave: 2023: All rights reserved</p>
+        </div>
+      </div>
+     </footer>
+
+
+  </body>
+</html>
