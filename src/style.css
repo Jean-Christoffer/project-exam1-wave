@@ -374,7 +374,7 @@ header, .nav{
   justify-content: center;
 }
 .home-header{
-  background: url('/images/909.jpg');
+  background: url('../public/images/909.jpg');
   width: 100%;
   height: 50vh;
   background-repeat: no-repeat;
