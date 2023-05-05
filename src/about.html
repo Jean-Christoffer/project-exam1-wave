@@ -2,87 +2,158 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content= "Learn more about Wave - our mission, our team, and our passion for electronic music!" />
+    <meta
+      name="description"
+      content="Learn more about Wave - our mission, our team, and our passion for electronic music!"
+    />
     <link rel="icon" type="image/svg+xml" href="/logo.svg" />
     <link rel="stylesheet" href="style.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bruno+Ace+SC&display=swap" rel="stylesheet"> 
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight&display=swap" rel="stylesheet">     
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bruno+Ace+SC&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter+Tight&display=swap"
+      rel="stylesheet"
+    />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="components/hamburger.js" type="module" defer></script>
-    <script src="https://kit.fontawesome.com/7cc6ea881f.js" crossorigin="anonymous"></script> 
-    
+    <script
+      src="https://kit.fontawesome.com/7cc6ea881f.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="components/about.js" defer type="module"></script>
 
     <title>WAVE</title>
   </head>
   <body>
     <header class="flex">
-      <div class="hamburger" aria-controls="nav" aria-expanded="false" role="button">
+      <div
+        class="hamburger"
+        aria-controls="nav"
+        aria-expanded="false"
+        role="button"
+      >
         <span class="line top"></span>
         <span class="line middle"></span>
         <span class="line bottom"></span>
       </div>
       <div class="title-site" role="button"><a href="index.html">WAVE</a></div>
-      <nav  id="nav">
+      <nav id="nav">
         <ul class="nav flex">
           <li><a href="index.html">Home</a></li>
           <li><a href="posts.html">Posts</a></li>
           <li><a href="contact.html">Contact</a></li>
           <li><a href="about.html">About</a></li>
         </ul>
-    </nav>
-  </header>
-     <main id="content">
+      </nav>
+    </header>
+    <main id="content">
       <section class="about-us-section flex">
+
         <article class="about-us-article">
-          <h2>Who are we?</h2>
-          <p>Wave is a well-established electronic music blog that has been around for a decade. It has been providing
-          music lovers with the latest and greatest in electronic music, covering a broad spectrum of genres, from
-          techno and house to experimental and ambient. The blog has gained a following of both seasoned veterans of the
-          electronic music scene and newcomers alike, who are looking to explore the genre.</p>
+          <div class="article-about-wrapper">
+              <h2>Who are we?</h2>
+              <p>
+                Wave is a well-established electronic music blog that has been
+                around for a decade. It has been providing music lovers with the
+                latest and greatest in electronic music, covering a broad spectrum
+                of genres, from techno and house to experimental and ambient. The
+                blog has gained a following of both seasoned veterans of the
+                electronic music scene and newcomers alike, who are looking to
+                explore the genre.
+              </p>
+          </div>
 
-          <p>Over the past 10 years, Wave has showcased emerging artists and underground sounds that might not have
-          received as much attention otherwise. This dedication to promoting new talent and unique sounds has helped to
-          establish the blog as a go-to destination for electronic music fans.</p>
+          <div class="image-carousel" id="img-carousel" aria-label="image-slider">
+            <button
+              class="img-slider-button right prev"
+              aria-label="image-previous"
+            >
+              <i class="fa-solid fa-arrow-left"></i>
+            </button>
+            <button class="img-slider-button left next" aria-label="image-next">
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
+            <ul class="image-slider" id="slides">
+              <li class="slide active-slide">
+                <img src="/images/crew1.jpg" alt="About us image" />
+              </li>
+              <li class="slide">
+                <img src="/images/about3.jpg" alt="About us image" />
+              </li>
+              <li class="slide">
+                <img src="/images/about4.jpg" alt="About us image" />
+              </li>
+              <li class="slide">
+                <img src="/images/crew.jpg" alt="About us image" />
+              </li>
+              <li class="slide">
+                <img src="/images/about6.jpg" alt="About us image" />
+              </li>
+            </ul>
+          </div>
+        </article>
 
-          <p>With a team of dedicated writers, Wave covers a diverse range of content, including interviews with artists,
-          album reviews, event coverage, and playlists. The blog also provides its readers with a space to discover new
-          music, offering curated playlists that highlight the latest and most innovative tracks.</p>
+
+        <article class="about-article2">
+          <div class="about-article2-header">
+            <p>Want to write for us? We are always looking for new talent, Contact us!</p>
+            <div class="btn-container about-btn">
+              <a href="contact.html" class="btn">Contact us</a>
+            </div>
+          </div>
+          <div class="article-about-wrapper">
+              <p>
+                Over the past 10 years, Wave has showcased emerging artists and
+                underground sounds that might not have received as much attention
+                otherwise. This dedication to promoting new talent and unique sounds
+                has helped to establish the blog as a go-to destination for
+                electronic music fans.
+              </p>
+              <p>
+                With a team of dedicated writers, Wave covers a diverse range of
+                content, including interviews with artists, album reviews, event
+                coverage, and playlists. The blog also provides its readers with a
+                space to discover new music, offering curated playlists that
+                highlight the latest and most innovative tracks.
+              </p>
+          </div>
 
         </article>
+
+
         <div class="music-notes">
-          <div class="note1">
-            &#119188;
+          <div class="note1">&#119188;</div>
+          <div class="note2">&#127900;</div>
+          <div class="note3">&#119135;</div>
+          <div class="note4">&#127900;</div>
+          <div class="note5">&#119135;</div>
         </div>
-        <div class="note2">
-          &#127900;
-        </div>
-        <div class="note3">
-          &#119135;
-        </div>
-        <div class="note4">
-          &#127900;
-        </div>
-        <div class="note5">
-          &#119135;
-        </div>
-        </div>
+  
+
+        
       </section>
-      <div class="svg-container">
+      <div class="svg-container"></div>
+    </main>
 
-      </div>
-     </main>
-
-     <footer>
+    <footer>
       <div class="footer-wrapper">
         <div class="socials-wrapper flex">
           <h1>Wave</h1>
@@ -94,11 +165,19 @@
         </div>
         <form class="footer-form form flex">
           <div class="subscribe">
-              <h2>Subscribe to our news letter</h2>
-              <p>Subsribe to stay updated with our latest blog posts and happenings in the electronic music scene</p>
+            <h2>Subscribe to our news letter</h2>
+            <p>
+              Subsribe to stay updated with our latest blog posts and happenings
+              in the electronic music scene
+            </p>
           </div>
           <div>
-            <input type="email" required placeholder="example@mail.com" class="form-field" />
+            <input
+              type="email"
+              required
+              placeholder="example@mail.com"
+              class="form-field"
+            />
             <button class="btn subscribe-btn">Subscribe</button>
           </div>
         </form>
@@ -107,8 +186,6 @@
           <p>Copyright Ⓒ Wave: 2023: All rights reserved</p>
         </div>
       </div>
-     </footer>
-
-
+    </footer>
   </body>
 </html>
