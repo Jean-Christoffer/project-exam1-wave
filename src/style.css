@@ -712,16 +712,17 @@ footer{
   position: relative;
   flex-direction: column;
   align-items: center;
-  background-image: url('aboutGraphic.svg');
   background-repeat: no-repeat;
   background-position: bottom;
   background-size: contain;
-  min-height: 100vh;
+  justify-content: center;
   letter-spacing: -0.003em;
   line-height: 28px;
 
 }
-
+.divider-img{
+  display: block;
+}
 .music-notes {
   display: block;
   margin: auto;
