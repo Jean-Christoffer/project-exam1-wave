@@ -392,6 +392,7 @@ header, .nav{
   text-decoration: underline;
   text-underline-offset: 20px;
 }
+
 .hero-text h2{
   font-size: 1rem;
 }
@@ -458,9 +459,12 @@ header, .nav{
   background-color: #101111;
   padding: 20px;
 }
-.btn-container{ 
+.btn-container-home{ 
   margin: 10px auto;
   text-align: center;
+}
+.btn-container-home a{
+  width: 250px;
 }
 @media(min-width:1344px){
   .excerpt{
