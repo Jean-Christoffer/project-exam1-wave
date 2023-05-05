@@ -77,7 +77,7 @@ async function renderHTML(data){
                 postArticle.className = 'subTitle-text'
 
                 cardPostContainer.append(postTitle,postArticle)
-                cardBodyContainer.append(cardPostContainer)
+                
 
                 const subInfo = document.createElement('div')
                 subInfo.className = 'sub-info'
@@ -93,16 +93,17 @@ async function renderHTML(data){
 
                 const categoryWrapper = document.createElement('div')
                 const category = document.createElement('small')
-                const categoryTag = document.createElement('p')
-                category.textContent = `${post._embedded['wp:term'][0][0].name}`
-                categoryTag.textContent = 'Category:'
+                category.textContent = `Category: ${post._embedded['wp:term'][0][0].name}`
 
-                categoryWrapper.append(categoryTag,category)
+                const hr = document.createElement('hr')
+                
+                cardBodyContainer.append(cardPostContainer,hr,subInfo)
+                categoryWrapper.append(category)
                 userInfoContainer.append(userName,datePublished)
                 subInfo.append(userInfoContainer,categoryWrapper)
 
 
-                postCard.append(postTitleContainer,cardBodyContainer,subInfo)
+                postCard.append(postTitleContainer,cardBodyContainer)
 
 
                 latestSection.append(postCard)

@@ -26,6 +26,7 @@
   --size-xl: min(75rem, calc(100% - 2rem));
   --size-md: min(40rem, calc(100% - 2rem)); 
   --size-xs: min(30rem, calc(100% - 2rem));
+  --size-card: min(22rem, calc(100% - 2rem));
 }
 *, *:before, *:after {
   box-sizing: inherit;
@@ -279,12 +280,12 @@ header, .nav{
 .blog-card{
   display: flex;
   flex-direction: column;
-  width: 22rem;
+  width: var(--size-card);
   height: 450px;
   overflow: hidden;
   border-radius: 5px;
   color: black;
-  background: rgb(245, 243, 243);
+  background: rgb(255, 251, 251);
   font-size: 16px;
   position: relative;
 }
@@ -298,8 +299,53 @@ header, .nav{
 }
 .title-link{
   color: #000;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+.card-body-container{
+  width: 100%;
+  height: 60%;
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+
+}
+.card-post-container{
+  width: 100%;
+  height: 70%;
+  position: relative;
+  padding: 10px;  
+  text-align: center;
+  
+}
+.card-post-container p{
+  font-size: 14;
+  margin-top: 15px;
 }
 
+.sub-info{
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  display: inline-flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+
+
+}
+.card-body-container hr{
+  top: 70%;
+  width: 80%;
+  left: 10%;
+
+  justify-self: center;
+  position: absolute;
+}
+.title-link:hover{
+  text-decoration: underline 0.5px;
+}
 @media(min-width:52rem){
   .blog-card{
     display: inline-block;
@@ -308,6 +354,9 @@ header, .nav{
   }
   .blog-card:nth-child(2) {
     margin-left: 0px !important;
+  }
+  .card-post-container{
+    text-align: left;
   }
 }
 
