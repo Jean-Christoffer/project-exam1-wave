@@ -46,21 +46,26 @@ async function renderHTML(data){
                 const formatedElement = parser.parseFromString(formatedText, 'text/html').body.firstChild;
                 const formattedFinal = formatedElement.textContent;
 
-                //card
+      
                 const postCard = document.createElement('div')
                 postCard.className = 'blog-card'
-                //header
+        
                 const postTitleContainer = document.createElement('div')
                 postTitleContainer.className = 'header'
-                //header image
+                
+                const headerImageLink = document.createElement('a')
+                headerImageLink.href= `details.html?id=${post.id}`
+
                 const headerImage = document.createElement('img')
                 headerImage.src = `${post._embedded['wp:featuredmedia'][0].source_url}`
                 headerImage.alt = post.title.rendered
+      
 
-                postTitleContainer.append(headerImage)
+                headerImageLink.append(headerImage)
+                postTitleContainer.append(headerImageLink)
               
 
-                //body
+    
                 const cardBodyContainer = document.createElement('div')
                 cardBodyContainer.className = 'card-body-container'
 
@@ -183,5 +188,7 @@ function buttonChecker(maxIndex = 3,cardIndex = 1){
         prevButton.removeAttribute('disabled');
     }
 }
+
+
 buttonChecker()
 

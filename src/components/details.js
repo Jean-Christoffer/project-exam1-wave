@@ -20,7 +20,11 @@ const selectors = [
     '.comment-field',
     '.comment-count',
     '.snackbar-wrapper',
-    '.comment-btn'
+    '.comment-btn',
+    '.modal',
+    '.modal-img',
+    '.modal-btn',
+
 ]
 const mapSelect = selectors.map(element => document.querySelector(element))
 const [
@@ -38,12 +42,12 @@ const [
     commentField,
     commentCount,
     snackbarWrapper,
-    commentButton
+    commentButton,
+    modal,
+    modalImg,
+    modalBtn,
+
 ] = mapSelect
-
-const months = {
-
-}
 
 async function getData(param){
     try{
@@ -115,7 +119,7 @@ async function getComments(){
     }
 }
 
-function renderHtml(data, comments){
+function renderHtml(data,comments = ''){
 
     const formatedText = data.content.rendered
     const parser = new DOMParser();
@@ -162,9 +166,13 @@ function renderHtml(data, comments){
          })
 
     articleHeader.style.backgroundImage = `url(${data._embedded['wp:featuredmedia'][0].source_url})`
+
+
     blogTitle.textContent =  data.title.rendered
     author.textContent = `Author: ${data._embedded.author[0].name}`
+ 
     
+    modalImg.src = data._embedded['wp:featuredmedia'][0].source_url
     
     const newDate = new Date(data.date)
     
@@ -182,16 +190,41 @@ function renderHtml(data, comments){
 
     commentCount.textContent = `Comments (${comments.length})`
 
-    
+
 }
+
+
+articleHeader.addEventListener('click',()=>{
+    modal.showModal()
+    console.log(dialog.nextSibling)
+    const body = document.querySelector('body')
+    body.classList.add('stop-scrolling')
+})
+
+modalBtn.addEventListener('click',()=> {
+    modal.close()
+    const body = document.querySelector('body')
+    body.classList.remove('stop-scrolling')
+})
+
+const dialog = document.querySelector('dialog');
+dialog.addEventListener("click", (event) => {
+
+    if (event.target === dialog) {
+   
+      dialog.close();
+      const body = document.querySelector('body')
+      body.classList.remove('stop-scrolling')
+    }
+  });
+  
 
 async function renderPage(){
     try{
         loader.classList.add('show')
         const data = await getData(id)
         const comments = await getComments()
-        console.log(comments)
-        renderHtml(data, comments)
+        renderHtml(data,comments)
     }catch(error){
         console.log(error)
     }finally{

@@ -1,5 +1,6 @@
 import showSnackBar from "./snackBar.js";
 import FetchHelper from "./fetchHelper.js";
+
 const nameInput = document.querySelector('#name')
 const mailInput = document.querySelector('#email')
 const subjectInput = document.querySelector('#subject')
@@ -17,18 +18,19 @@ contactForm.addEventListener('submit', async function(e) {
     const regEx = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g; 
     const patternMatches = regEx.test(email);
 
-    name.length > 5 ? removeErrorMessage(nameInput) : errorMessage(nameInput,'Please enter a name')
+    name.length > 5 ? removeErrorMessage(nameInput) : errorMessage(nameInput,'Please provide atleast 5 characters')
     patternMatches ? removeErrorMessage(mailInput) : errorMessage(mailInput, 'Please enter a valid email')
-    subject.length > 15 ?  removeErrorMessage(subjectInput) : errorMessage(subjectInput, 'Please provide a subject')
+    subject.length > 15 ?  removeErrorMessage(subjectInput) : errorMessage(subjectInput, 'Please provide atleast 15 characters')
     questionValue.length > 25 ? removeErrorMessage(question) : errorMessage(question, 'Please provide atleast 25 characters')
 
-    if( name.length > 25 && patternMatches && subject.length > 15 && questionValue.length > 25){
+    if( name.length >= 5 && patternMatches && subject.length >= 15 && questionValue.length >= 25){
         nameInput.value = ''
         mailInput.value = ''
         subjectInput.value = ''
         question.value = ''
         showSnackBar(snackbarWrapper, 'Message sendt! we will reply shortly')
-        postDetails()
+        console.log('well done')
+
       }
     
 })
@@ -38,9 +40,7 @@ function errorMessage(input, message){
     error.textContent = message
     error.classList.add('show')
   
-  }
-
-  
+  } 
 function removeErrorMessage(input){
     let error = input.parentElement.children[2]
     error.classList.remove('show')
