@@ -3,6 +3,11 @@ const nav = document.querySelector('.nav')
 const overlay = document.querySelector('.overlay')
 const body = document.querySelector('body')
 const menuItems = document.querySelectorAll('.menu_item')
+
+const footerForm = document.querySelector('.footer-form ')
+const emailInput = document.querySelector('#email-input')
+const snackbarWrapper = document.querySelector('.snackbar-wrapper-footer')
+import showSnackBar from "./snackBar.js";
 let activeClass = false
 hamburger.addEventListener('click',  () => {
   
@@ -41,3 +46,30 @@ overlay.addEventListener('click',()=>{
 
 })
 
+
+
+footerForm.addEventListener('submit', async function(e) {
+  e.preventDefault()
+
+
+  const email= emailInput.value.toLowerCase().trim()
+  const regEx = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g; 
+  const patternMatches = regEx.test(email);
+  patternMatches ? (removeErrorMessage(emailInput),
+  emailInput.value = '',
+  showSnackBar(snackbarWrapper, 'Subscribed!')
+  ) : errorMessage(emailInput, 'Please enter a valid email')
+ 
+})
+
+
+function errorMessage(input, message){
+  let error = input.parentElement.children[2]
+  error.textContent = message
+  error.classList.add('show')
+
+} 
+function removeErrorMessage(input){
+  let error = input.parentElement.children[2]
+  error.classList.remove('show')
+} 

@@ -68,22 +68,18 @@ form.addEventListener('submit', async function(e) {
     e.preventDefault()
 
     const nameValue = authorName.value.toLowerCase().trim()
-    const emailValue = email.value.toLowerCase().trim()
     const commentValue = comment.value.toLowerCase().trim()
 
-    const regEx = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g; 
-    const patternMatches = regEx.test(emailValue);
 
 
 
-    if( nameValue.length > 0 && patternMatches &&  commentValue.length > 0){
+    if( nameValue.length > 0  &&  commentValue.length > 0){
         try{
             commentButton.disabled = true
             const API = new FetchHelper(`${import.meta.env.VITE_API_KEY2}`)
             const post = await API.post(`comments?post=${id}`,{
                 "post": id,
                 "author_name": `${authorName.value}`,
-                "author_email": `${email.value}`,
                 "content": `${comment.value}`
             })
             console.log(post)
@@ -95,7 +91,6 @@ form.addEventListener('submit', async function(e) {
     
             commentButton.disabled = false
             authorName.value = ''
-            email.value = ''
             comment.value =''
             showSnackBar(snackbarWrapper, 'Success! comment pending approval')
     

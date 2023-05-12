@@ -9,7 +9,7 @@ export default class FetchHelper {
 
     async post (endpoint,body){
         const response = await fetch(this.baseURL + endpoint,{
-            method:'post',
+            method:'POST',
             headers:{
                 'Content-Type': 'application/json;charset=utf-8',
                

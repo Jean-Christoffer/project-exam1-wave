@@ -1,20 +1,20 @@
 import showSnackBar from "./snackBar.js";
-import FetchHelper from "./fetchHelper.js";
 
-const nameInput = document.querySelector('#name')
-const mailInput = document.querySelector('#email')
-const subjectInput = document.querySelector('#subject')
+const nameInput = document.querySelector('#your-name')
+const mailInput = document.querySelector('#your-email')
+const subjectInput = document.querySelector('#your-subject')
 const contactForm = document.querySelector('.contact-form')
 const snackbarWrapper = document.querySelector('.snackbar-wrapper')
-const question = document.querySelector('#question')
+const question = document.querySelector('#your-message')
 
 contactForm.addEventListener('submit', async function(e) {
     e.preventDefault()
+    const formData = new FormData(contactForm);
 
-    const name= nameInput.value.toLowerCase().trim()
-    const email= mailInput.value.toLowerCase().trim()
-    const subject = subjectInput.value.toLowerCase().trim()
-    const questionValue = question.value.toLowerCase().trim()
+    const name = nameInput.value.trim()
+    const email = mailInput.value.trim()
+    const subject = subjectInput.value.trim()
+    const questionValue = question.value.trim()
     const regEx = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g; 
     const patternMatches = regEx.test(email);
 
@@ -29,8 +29,17 @@ contactForm.addEventListener('submit', async function(e) {
         subjectInput.value = ''
         question.value = ''
         showSnackBar(snackbarWrapper, 'Message sendt! we will reply shortly')
-        console.log('well done')
 
+        fetch(`${import.meta.env.VITE_API_KEY3}56/feedback`, {
+            method: 'POST',
+            body: formData
+          })
+          .then(response => response.json())
+          .catch(error => {
+           console.log(error)
+          });
+
+       
       }
     
 })
@@ -44,23 +53,8 @@ function errorMessage(input, message){
 function removeErrorMessage(input){
     let error = input.parentElement.children[2]
     error.classList.remove('show')
-  } 
-  async function postDetails(){
-    try{
-
-        const API = new FetchHelper(`${import.meta.env.VITE_API_KEY3}`)
-        const post = await API.post(`53`,{
-       
-            "your-name": `${nameInput.value}`,
-            "your-email": `${mailInput.value}`,
-            "your-subject":`${subjectInput.value}`,
-            "optional-message": `${question.value}`
-        })
-        console.log(post)
+  }
+  
 
 
-    } catch(error){
-        console.log(error)
-    }
 
-}
