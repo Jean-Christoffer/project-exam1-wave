@@ -58,7 +58,7 @@ async function getData(categoryValue = '', searchQuery =''){
       }
     });
 
-      if(pages === total){
+      if(pages === total  || blogPosts.length === 0){
         loadMore.style.display = 'none'
       }else{
         loadMore.style.display = 'block'
@@ -142,6 +142,7 @@ async function getData(categoryValue = '', searchQuery =''){
 
 //filter
 category.addEventListener('change',()=>{
+    pages = 1
     let found = categoriesArr.find(item => item.name === category.value)
     found ? renderPage(`&categories=${found.id || ''}`,'') : renderPage('','')
     postSection.textContent = ''
