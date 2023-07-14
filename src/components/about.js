@@ -1,12 +1,23 @@
-import gsap from 'gsap'
-const buttons = document.querySelectorAll('.img-slider-button');
-const slides = document.querySelector('#slides');
-const body = document.querySelector('body')
-const slideImages = document.querySelector('.image-slider');
-const modalBtn = document.querySelector( '.modal-btn')
-const postSection = document.querySelector('.post-section')
+const selectors = 
+[
+    '#slides',
+    'body',
+    '.modal-btn',
+    '.about-modal',
+]
+const mapSelect = selectors.map(element => document.querySelector(element))
 
-const modal = document.querySelector('.about-modal')
+const 
+[
+    slides,
+    body,
+    modalBtn,
+    modal,
+    
+] = mapSelect
+
+const buttons = document.querySelectorAll('.img-slider-button');
+
 buttons.forEach(button => {
   button.addEventListener('click', () => {
     const findNext = button.classList.contains('next') ? 1 : -1;

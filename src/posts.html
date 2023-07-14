@@ -19,51 +19,37 @@
     />
     <link rel="icon" type="image/svg+xml" href="/logo.svg" />
     <link rel="stylesheet" href="style.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;600&display=swap" rel="stylesheet"> 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Bruno+Ace+SC&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter+Tight&display=swap"
-      rel="stylesheet"
-    />
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap" as="style">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Bruno+Ace+SC&display=swap" as="style">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bruno+Ace+SC&display=swap">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;600;700&display=swap" as="style">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;600;700&display=swap">
+    
+
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script
       src="https://kit.fontawesome.com/7cc6ea881f.js"
       crossorigin="anonymous"
+      defer
     ></script>
-    <script src="components/hamburger.js" type="module" defer></script>
-    <script src="components/posts.js" type="module" defer></script>
+    <script src="components/main.js" type="module"></script>
+    <script src="components/posts.js" type="module"></script>
 
-    <title>WAVE</title>
+    <title>WAVE || Posts</title>
   </head>
   <body>
     <div class="overlay"></div>
     <header class="flex">
       <div
-        class="hamburger"
-        aria-controls="nav"
-        aria-expanded="false"
-        role="button"
+      class="hamburger"
+      aria-controls="nav"
+      aria-expanded="false"
+      role="button" 
+      aria-label="Toggle navigation menu"
       >
         <span class="line top"></span>
         <span class="line middle"></span>
@@ -85,24 +71,27 @@
         <h1>Posts</h1>
         <div class="post-form-wrapper flex">
           <div class="sort-form">
-            <select class="category">
+            <label for="categorySelect" class="sr-only">Category</label>
+            <select class="category" name="category" id="categorySelect">
               <option value="">Category</option>
               <option value="AI technology">AI technology</option>
               <option value="Sound">Sound</option>
               <option value="Scene">Scene</option>
             </select>
-
-            <select class="sort-date">
+            <label for="sort-date-old-new" class="sr-only">Sort-date</label>
+            <select class="sort-date" id="sort-date-old-new" name="sort-date">
               <option value="newest">Newest</option>
               <option value="oldest">Oldest</option>
             </select>
           </div>
           <form class="search-form flex">
             <div class="search input-container flex">
-              <label for="search">Search post</label>
-              <input type="text" id="search" placeholder="search post" />
+              <label for="search" class="sr-only">Search post</label>
+                <div class="flex search-input-container">
+                  <input type="text" id="search" placeholder="search post" name="search-post" />
+                  <button class="btn">Seach</button>
+                </div>
             </div>
-            <button class="btn search-btn">Seach</button>
           </form>
         </div>
         <div class="post-section">
@@ -134,11 +123,11 @@
     <footer>
       <div class="footer-wrapper">
         <div class="socials-wrapper flex">
-          <h1>Wave</h1>
-          <div class="socials-cotnainer flex">
-            <i class="fa-brands fa-instagram"></i>
-            <i class="fa-brands fa-facebook-f"></i>
-            <i class="fa-brands fa-twitter"></i>
+            <a href="index.html"><h1>Wave</h1></a>
+          <div class="socials-container flex">
+            <a href="https://www.instagram.com/" target="blank"><i class="fa-brands fa-instagram"></i><p  class="sr-only">Instagram</p></a>
+            <a href="https://www.facebook.com/" target="blank"><i class="fa-brands fa-facebook-f"></i><p  class="sr-only">facebook</p></a>
+            <a href="https://www.twitter.com/" target="blank"><i class="fa-brands fa-twitter"></i><p  class="sr-only">twitter</p></a>
           </div>
         </div>
         <form class="footer-form form flex">

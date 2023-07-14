@@ -18,42 +18,29 @@
       content="Ride the sound waves of electronic music with Wave - your ultimate guide to the latest beats and grooves!"
     />
     <link rel="icon" type="image/svg+xml" href="/logo.svg" />
+
     <link rel="stylesheet" href="style.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;600&display=swap" rel="stylesheet"> 
-    <link
-      href="https://fonts.googleapis.com/css2?family=Bruno+Ace+SC&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter+Tight&display=swap"
-      rel="stylesheet"
-    />
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap" as="style">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Bruno+Ace+SC&display=swap" as="style">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bruno+Ace+SC&display=swap">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;600;700&display=swap" as="style">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;600;700&display=swap">
+    
+
+    
+
     <script
       src="https://kit.fontawesome.com/7cc6ea881f.js"
       crossorigin="anonymous"
+      defer
     ></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="components/hamburger.js" type="module" defer></script>
-    <script src="components/home.js" type="module" defer></script>
-    <title>WAVE</title>
+    <script src="components/main.js" type="module" ></script>
+    <script src="components/home.js" type="module" ></script>
+    <title>WAVE || Home</title>
 
   </head>
   <body>
@@ -63,7 +50,8 @@
         class="hamburger"
         aria-controls="nav"
         aria-expanded="false"
-        role="button"
+        role="button" 
+        aria-label="Toggle navigation menu"
       >
         <span class="line top"></span>
         <span class="line middle"></span>
@@ -80,7 +68,7 @@
       </nav>
     </header>
     <main id="content">
-      <section class="home-header">
+      <section class="home-header" >
         <div class="hero-text">
           <h1>Welcome to <span class="title-site title-home">WAVE</span></h1>
           <h2>The number one electro blog</h2>
@@ -88,7 +76,7 @@
       </section>
       <div class="latest-container-title latest-posts flex">
         <h1>Latest posts</h1>
-        <div class="btn-container flex">
+        <div class="btn-container btn-container-home flex">
           <button
             class="arrow arrow-left"
             aria-label="Navigation-previous-slide"
@@ -126,7 +114,7 @@
 
           <article class="article1">
             <div class="article-img-container">
-              <img src="images/crew3.jpg"/>
+              <img src="images/crew3.jpg" alt="image of the main bloggers"/>
             </div>
             <div class="article-text-container">
               <h1>WAVE</h1>
@@ -163,8 +151,8 @@
               up-to-date with the latest trends and discovering new sounds to
               add to your playlist.
             </p>
-            <div class="btn-container btn-container-home">
-              <a class="btn" href="about.html">Learn more</a>
+            <div class="btn-container">
+              <a class="btn learn-more-btn" href="about.html">About us</a>
             </div>
           </article>
         </section>
@@ -174,11 +162,11 @@
     <footer>
       <div class="footer-wrapper">
         <div class="socials-wrapper flex">
-          <h1>Wave</h1>
-          <div class="socials-cotnainer flex">
-            <i class="fa-brands fa-instagram"></i>
-            <i class="fa-brands fa-facebook-f"></i>
-            <i class="fa-brands fa-twitter"></i>
+            <a href="index.html"><h1>Wave</h1></a>
+          <div class="socials-container flex">
+            <a href="https://www.instagram.com/" target="blank"><i class="fa-brands fa-instagram"></i><p  class="sr-only">Instagram</p></a>
+            <a href="https://www.facebook.com/" target="blank"><i class="fa-brands fa-facebook-f"></i><p  class="sr-only">facebook</p></a>
+            <a href="https://www.twitter.com/" target="blank"><i class="fa-brands fa-twitter"></i><p  class="sr-only">twitter</p></a>
           </div>
         </div>
         <form class="footer-form form flex">
@@ -209,7 +197,6 @@
       </div>
       <div class="snackbar-wrapper snackbar-wrapper-footer">
         <div class="snackbar flex">
-
           <p class="snab"></p>
         </div>
       </div>

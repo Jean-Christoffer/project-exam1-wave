@@ -1,18 +1,15 @@
 
 import FetchHelper from "./fetchHelper.js";
+
 const latestSection = document.querySelector('#latest')
 const loader = document.querySelector('.spinner')
-
-
-
-
 
 let maxPerPage = `&per_page=6`
 let dateDescending = `&orderby=date&order=desc`
 
 async function getData(){
     try{
-        const API = new FetchHelper(`${import.meta.env.VITE_API_KEY}`)
+        const API = new FetchHelper(`https://wave.jeandahldev.no/wp-json/wp/v2/posts`)
         const response = await API.get(`?_embed${maxPerPage}${dateDescending}`)
         const data = await response.json(); 
         return data
@@ -57,13 +54,14 @@ async function renderHTML(data){
                 headerImageLink.href= `details.html?id=${post.id}`
 
                 const headerImage = document.createElement('img')
-                headerImage.src = `${post._embedded['wp:featuredmedia'][0].source_url}`
-                headerImage.alt = post.title.rendered
+                headerImage.src = `${post._embedded['wp:featuredmedia'][0].media_details.sizes.medium_large
+                .source_url}`
+                headerImage.alt = `${post._embedded['wp:featuredmedia'][0].alt_text}`
       
 
-                headerImageLink.append(headerImage)
+             
                 postTitleContainer.append(headerImageLink)
-              
+                headerImageLink.append(headerImage) 
 
     
                 const cardBodyContainer = document.createElement('div')
@@ -138,9 +136,6 @@ async function renderPage(){
 renderPage()
 
 //Slider 
-
-
-
 function sliderFunction(){
     const topSlider = document.querySelectorAll('.arrow')
     const slider = document.querySelector('.slider')
@@ -166,7 +161,7 @@ function sliderFunction(){
         
             }
             buttonChecker(maxIndex,cardIndex)
-            console.log(cardIndex)
+  
         })
 
     })

@@ -6,31 +6,28 @@ const queryString = document.location.search;
 const params  = new URLSearchParams(queryString);
 const id = params.get("id");
 
-const selectors = [
-    '.blog-section',
+const selectors =
+[
     '.blog-title',
-    '.blog',
     '.blog-container',
-    '.date','.author',
+    '.date',
+    '.author',
     'form',
     '.input-field-name',
     '.input-field-comment',
     '.article-header',
-    '.input-field-email',
     '.comment-field',
     '.comment-count',
     '.snackbar-wrapper',
-    '.comment-btn',
+    '#comment-btn',
     '.modal',
     '.modal-img',
     '.modal-btn',
-
 ]
 const mapSelect = selectors.map(element => document.querySelector(element))
-const [
-    blogSection,
+const 
+[
     blogTitle,
-    blog,
     blogContainer,
     date,
     author,
@@ -38,7 +35,6 @@ const [
     authorName,
     comment, 
     articleHeader,
-    email,
     commentField,
     commentCount,
     snackbarWrapper,
@@ -51,7 +47,7 @@ const [
 
 async function getData(param){
     try{
-        const API = new FetchHelper(`${import.meta.env.VITE_API_KEY}/${param}`)
+        const API = new FetchHelper(`https://wave.jeandahldev.no/wp-json/wp/v2/posts/${param}`)
         const response = await API.get(`?_embed`)
         const data = await response.json(); 
      
@@ -70,13 +66,10 @@ form.addEventListener('submit', async function(e) {
     const nameValue = authorName.value.toLowerCase().trim()
     const commentValue = comment.value.toLowerCase().trim()
 
-
-
-
     if( nameValue.length > 0  &&  commentValue.length > 0){
         try{
             commentButton.disabled = true
-            const API = new FetchHelper(`${import.meta.env.VITE_API_KEY2}`)
+            const API = new FetchHelper(`https://wave.jeandahldev.no/wp-json/wp/v2/`)
             const post = await API.post(`comments?post=${id}`,{
                 "post": id,
                 "author_name": `${authorName.value}`,
@@ -100,10 +93,19 @@ form.addEventListener('submit', async function(e) {
     
 })
 
+const inputBorders = [authorName, comment]
+inputBorders.forEach(el => el.addEventListener('input',inputBorderCheck))
+function inputBorderCheck() {
+
+    authorName.value.length > 0 ? authorName.style.border = '1px solid #5cd55c' : authorName.style.border = '1px solid #ddd'
+    comment.value.length > 0 ? comment.style.border = '1px solid #5cd55c' : comment.style.border = '1px solid #ddd'
+
+  }
+
 async function getComments(){
     try{
-        const API = new FetchHelper(`${import.meta.env.VITE_API_KEY2}`)
-        const response = await API.get(`comments?post=${id}`)
+        const API = new FetchHelper(`https://wave.jeandahldev.no/wp-json/wp/v2/`)
+        const response = await API.get(`comments?post=${id}&orderby=date&order=asc`)
         const comments = await response.json()
 
         return comments
@@ -165,9 +167,10 @@ function renderHtml(data,comments = ''){
 
     blogTitle.textContent =  data.title.rendered
     author.textContent = `Author: ${data._embedded.author[0].name}`
- 
+    document.title = `WAVE || ${data.title.rendered}`
     
     modalImg.src = data._embedded['wp:featuredmedia'][0].source_url
+    modalImg.alt = data._embedded['wp:featuredmedia'][0].alt_text
     
     const newDate = new Date(data.date)
     
@@ -185,13 +188,12 @@ function renderHtml(data,comments = ''){
 
     commentCount.textContent = `Comments (${comments.length})`
 
-
 }
 
 
 articleHeader.addEventListener('click',()=>{
     modal.showModal()
-    console.log(dialog.nextSibling)
+    
     const body = document.querySelector('body')
     body.classList.add('stop-scrolling')
 })
@@ -226,4 +228,5 @@ async function renderPage(){
         loader.classList.remove('show')
     }
 }
+window.addEventListener('load',inputBorderCheck)
 renderPage()
