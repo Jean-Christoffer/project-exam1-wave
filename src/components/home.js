@@ -19,7 +19,11 @@ async function getData(){
         console.log(error)
     }
 }
-
+function decodeHTMLEntities(text) {
+    const textArea = document.createElement('textarea');
+    textArea.innerHTML = text;
+    return textArea.value;
+}
 async function renderHTML(data){
 
         try{
@@ -71,7 +75,7 @@ async function renderHTML(data){
                 cardPostContainer.className = 'card-post-container'
 
                 const postTitle = document.createElement('a')
-                postTitle.textContent = post.title.rendered
+                postTitle.textContent = decodeHTMLEntities(post.title.rendered)
                 postTitle.className = 'title-link'
                 postTitle.href=`details.html?id=${post.id}`
 

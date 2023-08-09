@@ -115,7 +115,11 @@ async function getComments(){
         console.log(error)
     }
 }
-
+function decodeHTMLEntities(text) {
+    const textArea = document.createElement('textarea');
+    textArea.innerHTML = text;
+    return textArea.value;
+}
 function renderHtml(data,comments = ''){
 
     const formatedText = data.content.rendered
@@ -165,9 +169,10 @@ function renderHtml(data,comments = ''){
     articleHeader.style.backgroundImage = `url(${data._embedded['wp:featuredmedia'][0].source_url})`
 
 
-    blogTitle.textContent =  data.title.rendered
+    blogTitle.textContent =  decodeHTMLEntities(data.title.rendered)
+
     author.textContent = `Author: ${data._embedded.author[0].name}`
-    document.title = `WAVE || ${data.title.rendered}`
+    document.title = `WAVE || ${decodeHTMLEntities(data.title.rendered)}`
     
     modalImg.src = data._embedded['wp:featuredmedia'][0].source_url
     modalImg.alt = data._embedded['wp:featuredmedia'][0].alt_text

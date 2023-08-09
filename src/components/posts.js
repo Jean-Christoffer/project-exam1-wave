@@ -65,7 +65,11 @@ async function getData(categoryValue = "", searchQuery = "") {
     console.log(error);
   }
 }
-
+function decodeHTMLEntities(text) {
+    const textArea = document.createElement('textarea');
+    textArea.innerHTML = text;
+    return textArea.value;
+}
 function renderHTML(data, totalPosts, animate = true) {
   
   postSection.textContent = "";
@@ -108,7 +112,7 @@ function renderHTML(data, totalPosts, animate = true) {
     titleContainer.className = "article-title-container";
 
     const postTitle = document.createElement("a");
-    postTitle.textContent = post.title.rendered;
+    postTitle.textContent = decodeHTMLEntities(post.title.rendered);
     postTitle.className = "title-link";
     postTitle.href = `details.html?id=${post.id}`;
 
